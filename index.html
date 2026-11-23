@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BKM Masjid Baitus Shomad | Mijen Tengah, Kebonagung, Demak</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F5132',
+                        emas: '#D4AF37',
+                        light: '#F8FAF9'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .shadow-soft {
+                box-shadow: 0 4px 20px rgba(15, 81, 50, 0.08);
+            }
+            .rounded-xl-custom {
+                border-radius: 18px;
+            }
+        }
+    </style>
+</head>
+<body class="font-inter bg-light text-gray-800">
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-soft">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white text-xl">🕌</div>
+                <div>
+                    <h1 class="text-lg font-semibold text-primary">Baitus Shomad</h1>
+                    <p class="text-xs text-gray-500">BKM Mijen Tengah - Demak</p>
+                </div>
+            </div>
+
+            <!-- Menu Desktop -->
+            <nav class="hidden md:flex items-center gap-6">
+                <a href="#" class="text-primary font-medium">Beranda</a>
+                <a href="#profil" class="hover:text-primary transition">Profil</a>
+                <a href="#kegiatan" class="hover:text-primary transition">Kegiatan</a>
+                <a href="#keuangan" class="hover:text-primary transition">Laporan Keuangan</a>
+                <a href="#layanan" class="hover:text-primary transition">Layanan Jamaah</a>
+                <a href="#kontak" class="hover:text-primary transition">Kontak</a>
+                <button class="px-4 py-2 bg-emas text-white rounded-lg hover:bg-amber-600 transition">Login Admin</button>
+            </nav>
+
+            <!-- Tombol Menu Mobile -->
+            <button class="md:hidden text-primary text-2xl">☰</button>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-r from-primary to-green-700 text-white py-24 md:py-32">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl">
+                <span class="inline-block px-3 py-1 bg-emas/20 rounded-full text-sm mb-4">Selamat Datang</span>
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">Baitus Shomad <br><span class="text-emas">Rumah Ibadah & Pusat Kebaikan</span></h2>
+                <p class="text-lg text-gray-100 mb-8">Situs resmi Badan Kemakmuran Masjid Baitus Shomad, Mijen Tengah, Kec. Kebonagung, Kabupaten Demak. Mengelola masjid dengan amanah dan transparan.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#donasi" class="px-6 py-3 bg-emas rounded-lg font-medium hover:bg-amber-600 transition">Salurkan Donasi</a>
+                    <a href="#kegiatan" class="px-6 py-3 bg-white/10 border border-white/30 rounded-lg font-medium hover:bg-white/20 transition">Lihat Kegiatan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kartu Info Cepat -->
+    <section class="container mx-auto px-4 -mt-12 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="bg-white p-6 rounded-xl-custom shadow-soft">
+                <div class="text-3xl mb-3">🕌</div>
+                <h3 class="font-semibold text-primary mb-2">Jadwal Shalat</h3>
+                <p class="text-sm text-gray-600">Lihat waktu shalat harian & jadwal imam</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl-custom shadow-soft">
+                <div class="text-3xl mb-3">📢</div>
+                <h3 class="font-semibold text-primary mb-2">Pengumuman</h3>
+                <p class="text-sm text-gray-600">Daftar berita terbaru untuk seluruh jamaah</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl-custom shadow-soft">
+                <div class="text-3xl mb-3">💰</div>
+                <h3 class="font-semibold text-primary mb-2">Laporan Keuangan</h3>
+                <p class="text-sm text-gray-600">Data pemasukan & pengeluaran masjid</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl-custom shadow-soft">
+                <div class="text-3xl mb-3">📅</div>
+                <h3 class="font-semibold text-primary mb-2">Kegiatan Mendatang</h3>
+                <p class="text-sm text-gray-600">Pengajian rutin Jumat Kliwon & agenda lain</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visi Misi -->
+    <section id="profil" class="container mx-auto px-4 py-20">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="text-emas font-medium">Tentang Kami</span>
+                <h2 class="text-3xl font-bold text-primary mt-2 mb-6">Visi & Misi BKM Baitus Shomad</h2>
+                <p class="text-gray-600 mb-6">Badan Kemakmuran Masjid bertugas menjaga, merawat, dan mengembangkan masjid sebagai pusat ibadah, pendidikan agama, serta pelayanan sosial bagi warga Mijen Tengah dan sekitarnya.</p>
+                <div class="space-y-4">
+                    <div class="flex gap-3">
+                        <div class="w-8 h-8 bg-primary/10 text-primary rounded-full flex items-center justify-center shrink-0 mt-1">✓</div>
+                        <div>
+                            <h4 class="font-semibold">Visi</h4>
+                            <p class="text-sm text-gray-600">Mewujudkan Masjid Baitus Shomad sebagai pusat ibadah dan kebaikan yang bermanfaat</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <div class="w-8 h-8 bg-primary/10 text-primary rounded-full flex items-center justify-center shrink-0 mt-1">✓</div>
+                        <div>
+                            <h4 class="font-semibold">Misi</h4>
+                            <p class="text-sm text-gray-600">Mengelola masjid secara amanah, menyelenggarakan kegiatan keagamaan, serta menyalurkan bantuan sosial secara transparan</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-primary/10 p-6 rounded-xl-custom">
+                <div class="h-72 bg-white rounded-lg flex items-center justify-center text-primary text-xl">Foto Masjid Baitus Shomad</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Layanan Jamaah -->
+    <section id="layanan" class="bg-gray-50 py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-xl mx-auto mb-12">
+                <span class="text-emas font-medium">Pelayanan</span>
+                <h2 class="text-3xl font-bold text-primary mt-2">Layanan untuk Jamaah</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl-custom shadow-soft hover:shadow-lg transition">
+                    <div class="text-3xl mb-4">🏠</div>
+                    <h3 class="font-semibold text-primary mb-2">Sewa Ruang Masjid</h3>
+                    <p class="text-sm text-gray-600 mb-4">Ajukan permohonan pemakaian aula untuk tahlilan, akad nikah, pengajian</p>
+                    <a href="#" class="text-emas text-sm font-medium">Ajukan Sekarang →</a>
+                </div>
+                <div class="bg-white p-6 rounded-xl-custom shadow-soft hover:shadow-lg transition">
+                    <div class="text-3xl mb-4">🤲</div>
+                    <h3 class="font-semibold text-primary mb-2">Zakat & Donasi</h3>
+                    <p class="text-sm text-gray-600 mb-4">Salurkan zakat fitrah, zakat mal, infak, sedekah melalui QRIS / transfer</p>
+                    <a href="#donasi" class="text-emas text-sm font-medium">Salurkan Sekarang →</a>
+                </div>
+                <div class="bg-white p-6 rounded-xl-custom shadow-soft hover:shadow-lg transition">
+                    <div class="text-3xl mb-4">💬</div>
+                    <h3 class="font-semibold text-primary mb-2">Kotak Saran</h3>
+                    <p class="text-sm text-gray-600 mb-4">Sampaikan masukan, keluhan, atau ide kemajuan masjid</p>
+                    <a href="#kontak" class="text-emas text-sm font-medium">Kirim Pesan →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="kontak" class="bg-primary text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary text-xl">🕌</div>
+                        <h3 class="text-xl font-semibold">Baitus Shomad</h3>
+                    </div>
+                    <p class="text-gray-200 text-sm">Badan Kemakmuran Masjid, Mijen Tengah, Kec. Kebonagung, Kabupaten Demak</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Link Cepat</h4>
+                    <ul class="space-y-2 text-sm text-gray-200">
+                        <li><a href="#profil" class="hover:text-emas">Profil BKM</a></li>
+                        <li><a href="#kegiatan" class="hover:text-emas">Kegiatan & Pengumuman</a></li>
+                        <li><a href="#keuangan" class="hover:text-emas">Laporan Keuangan</a></li>
+                        <li><a href="#layanan" class="hover:text-emas">Layanan Jamaah</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Kontak</h4>
+                    <ul class="space-y-2 text-sm text-gray-200">
+                        <li>📞 Nomor Pengurus: 08xx-xxxx-xxxx</li>
+                        <li>✉️ Email: bkm.baitusshomad@gmail.com</li>
+                        <li>📍 Mijen Tengah, Kebonagung, Demak</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/20 mt-10 pt-6 text-center text-sm text-gray-300">
+                © 2026 BKM Masjid Baitus Shomad. Semua Hak Dilindungi
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
