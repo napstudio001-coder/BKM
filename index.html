@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BKM Masjid Baitus Shomad | Mijen Tengah, Kebonagung, Demak</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
@@ -32,10 +30,17 @@
             .rounded-xl-custom {
                 border-radius: 18px;
             }
+            /* Hindari konten tertutup navbar */
+            .scroll-smooth {
+                scroll-behavior: smooth;
+            }
+            section {
+                scroll-margin-top: 100px;
+            }
         }
     </style>
 </head>
-<body class="font-inter bg-light text-gray-800">
+<body class="font-inter bg-light text-gray-800 scroll-smooth">
     <!-- Navbar -->
     <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-soft">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -46,33 +51,26 @@
                     <p class="text-xs text-gray-500">BKM Mijen Tengah - Demak</p>
                 </div>
             </div>
-
-            <!-- Menu Desktop -->
             <nav class="hidden md:flex items-center gap-6">
-                <a href="#" class="text-primary font-medium">Beranda</a>
+                <a href="#beranda" class="text-primary font-medium">Beranda</a>
                 <a href="#profil" class="hover:text-primary transition">Profil</a>
-                <a href="#kegiatan" class="hover:text-primary transition">Kegiatan</a>
-                <a href="#keuangan" class="hover:text-primary transition">Laporan Keuangan</a>
                 <a href="#layanan" class="hover:text-primary transition">Layanan Jamaah</a>
                 <a href="#kontak" class="hover:text-primary transition">Kontak</a>
                 <button class="px-4 py-2 bg-emas text-white rounded-lg hover:bg-amber-600 transition">Login Admin</button>
             </nav>
-
-            <!-- Tombol Menu Mobile -->
             <button class="md:hidden text-primary text-2xl">☰</button>
         </div>
     </header>
 
     <!-- Hero Banner -->
-    <section class="bg-gradient-to-r from-primary to-green-700 text-white py-24 md:py-32">
+    <section id="beranda" class="bg-gradient-to-r from-primary to-green-700 text-white py-24 md:py-32">
         <div class="container mx-auto px-4">
             <div class="max-w-2xl">
                 <span class="inline-block px-3 py-1 bg-emas/20 rounded-full text-sm mb-4">Selamat Datang</span>
                 <h2 class="text-3xl md:text-5xl font-bold mb-6">Baitus Shomad <br><span class="text-emas">Rumah Ibadah & Pusat Kebaikan</span></h2>
                 <p class="text-lg text-gray-100 mb-8">Situs resmi Badan Kemakmuran Masjid Baitus Shomad, Mijen Tengah, Kec. Kebonagung, Kabupaten Demak. Mengelola masjid dengan amanah dan transparan.</p>
                 <div class="flex flex-wrap gap-4">
-                    <a href="#donasi" class="px-6 py-3 bg-emas rounded-lg font-medium hover:bg-amber-600 transition">Salurkan Donasi</a>
-                    <a href="#kegiatan" class="px-6 py-3 bg-white/10 border border-white/30 rounded-lg font-medium hover:bg-white/20 transition">Lihat Kegiatan</a>
+                    <a href="#formLayanan" class="px-6 py-3 bg-emas rounded-lg font-medium hover:bg-amber-600 transition">Ajukan Layanan</a>
                 </div>
             </div>
         </div>
@@ -134,7 +132,7 @@
         </div>
     </section>
 
-    <!-- Layanan Jamaah + FORM PENGIRIMAN DATA KE GOOGLE SHEETS -->
+    <!-- Layanan Jamaah + FORM -->
     <section id="layanan" class="bg-gray-50 py-20">
         <div class="container mx-auto px-4">
             <div class="text-center max-w-xl mx-auto mb-12">
@@ -152,7 +150,6 @@
                     <div class="text-3xl mb-4">🤲</div>
                     <h3 class="font-semibold text-primary mb-2">Zakat & Donasi</h3>
                     <p class="text-sm text-gray-600 mb-4">Salurkan zakat fitrah, zakat mal, infak, sedekah melalui QRIS / transfer</p>
-                    <a href="#donasi" class="text-emas text-sm font-medium">Salurkan Sekarang →</a>
                 </div>
                 <div class="bg-white p-6 rounded-xl-custom shadow-soft hover:shadow-lg transition">
                     <div class="text-3xl mb-4">💬</div>
@@ -162,7 +159,6 @@
                 </div>
             </div>
 
-            <!-- FORM -->
             <div id="formLayanan" class="bg-white p-6 rounded-xl-custom shadow-soft max-w-lg mx-auto">
                 <h3 class="text-xl font-semibold text-primary mb-4">Kirim Saran / Ajukan Layanan</h3>
                 <form id="formBKM">
@@ -208,8 +204,6 @@
                     <h4 class="font-semibold mb-4">Link Cepat</h4>
                     <ul class="space-y-2 text-sm text-gray-200">
                         <li><a href="#profil" class="hover:text-emas">Profil BKM</a></li>
-                        <li><a href="#kegiatan" class="hover:text-emas">Kegiatan & Pengumuman</a></li>
-                        <li><a href="#keuangan" class="hover:text-emas">Laporan Keuangan</a></li>
                         <li><a href="#layanan" class="hover:text-emas">Layanan Jamaah</a></li>
                     </ul>
                 </div>
@@ -228,11 +222,9 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT PENGHUBUNG GOOGLE SHEETS (SUDAH TERMASUK) -->
     <script>
-      // =================== GANTI BAGIAN INI ===================
+      // Ganti dengan URL Web App milikmu
       const URL_WEBAPP = "https://script.google.com/macros/s/AKfycby0h0KqItCfXTHxsXdOh6ZcdjaDp1aL9DnTWCWHYykKe1-bem2rTu3Ko0L7_BPU7Ccx/exec";
-      // ========================================================
       const form = document.getElementById("formBKM");
       const notif = document.getElementById("notif");
 
