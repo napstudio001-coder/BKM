@@ -134,19 +134,19 @@
         </div>
     </section>
 
-    <!-- Layanan Jamaah -->
+    <!-- Layanan Jamaah + FORM PENGIRIMAN DATA KE GOOGLE SHEETS -->
     <section id="layanan" class="bg-gray-50 py-20">
         <div class="container mx-auto px-4">
             <div class="text-center max-w-xl mx-auto mb-12">
                 <span class="text-emas font-medium">Pelayanan</span>
                 <h2 class="text-3xl font-bold text-primary mt-2">Layanan untuk Jamaah</h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
                 <div class="bg-white p-6 rounded-xl-custom shadow-soft hover:shadow-lg transition">
                     <div class="text-3xl mb-4">🏠</div>
                     <h3 class="font-semibold text-primary mb-2">Sewa Ruang Masjid</h3>
                     <p class="text-sm text-gray-600 mb-4">Ajukan permohonan pemakaian aula untuk tahlilan, akad nikah, pengajian</p>
-                    <a href="#" class="text-emas text-sm font-medium">Ajukan Sekarang →</a>
+                    <a href="#formLayanan" class="text-emas text-sm font-medium">Ajukan Sekarang →</a>
                 </div>
                 <div class="bg-white p-6 rounded-xl-custom shadow-soft hover:shadow-lg transition">
                     <div class="text-3xl mb-4">🤲</div>
@@ -158,8 +158,37 @@
                     <div class="text-3xl mb-4">💬</div>
                     <h3 class="font-semibold text-primary mb-2">Kotak Saran</h3>
                     <p class="text-sm text-gray-600 mb-4">Sampaikan masukan, keluhan, atau ide kemajuan masjid</p>
-                    <a href="#kontak" class="text-emas text-sm font-medium">Kirim Pesan →</a>
+                    <a href="#formLayanan" class="text-emas text-sm font-medium">Kirim Pesan →</a>
                 </div>
+            </div>
+
+            <!-- FORM -->
+            <div id="formLayanan" class="bg-white p-6 rounded-xl-custom shadow-soft max-w-lg mx-auto">
+                <h3 class="text-xl font-semibold text-primary mb-4">Kirim Saran / Ajukan Layanan</h3>
+                <form id="formBKM">
+                    <div class="mb-4">
+                        <label class="block text-sm mb-1">Nama Lengkap</label>
+                        <input type="text" name="nama" class="w-full border p-3 rounded-lg" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm mb-1">Nomor HP</label>
+                        <input type="text" name="kontak" class="w-full border p-3 rounded-lg" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm mb-1">Jenis Layanan</label>
+                        <select name="jenis_layanan" class="w-full border p-3 rounded-lg">
+                            <option value="Sewa Ruang">Permohonan Sewa Ruang Masjid</option>
+                            <option value="Donasi">Keterangan Donasi</option>
+                            <option value="Saran">Kotak Saran</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm mb-1">Isi Pesan</label>
+                        <textarea name="pesan" rows="4" class="w-full border p-3 rounded-lg" required></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg">Kirim Pesan</button>
+                </form>
+                <p id="notif" class="mt-4 text-center hidden"></p>
             </div>
         </div>
     </section>
@@ -198,5 +227,37 @@
             </div>
         </div>
     </footer>
+
+    <!-- JAVASCRIPT PENGHUBUNG GOOGLE SHEETS (SUDAH TERMASUK) -->
+    <script>
+      // =================== GANTI BAGIAN INI ===================
+      const URL_WEBAPP = "https://script.google.com/macros/s/AKfycby0h0KqItCfXTHxsXdOh6ZcdjaDp1aL9DnTWCWHYykKe1-bem2rTu3Ko0L7_BPU7Ccx/exec";
+      // ========================================================
+      const form = document.getElementById("formBKM");
+      const notif = document.getElementById("notif");
+
+      form.addEventListener("submit", async (e)=>{
+        e.preventDefault();
+        const formData = new FormData(form);
+        const payload = Object.fromEntries(formData.entries());
+        try {
+          const res = await fetch(URL_WEBAPP, {
+            method: "POST",
+            body: JSON.stringify(payload)
+          });
+          const hasil = await res.json();
+          if(hasil.status === "berhasil"){
+            notif.textContent = "✅ Pesan berhasil terkirim!";
+            notif.className = "mt-4 text-center text-green-600";
+            notif.classList.remove("hidden");
+            form.reset();
+          }
+        } catch(err) {
+          notif.textContent = "❌ Gagal mengirim data";
+          notif.className = "mt-4 text-center text-red-600";
+          notif.classList.remove("hidden");
+        }
+      })
+    </script>
 </body>
 </html>
