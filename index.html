@@ -30,17 +30,21 @@
             .rounded-xl-custom {
                 border-radius: 18px;
             }
-            /* Hindari konten tertutup navbar */
-            .scroll-smooth {
+            html {
                 scroll-behavior: smooth;
             }
             section {
-                scroll-margin-top: 100px;
+                scroll-margin-top: 90px;
+            }
+            a, button {
+                position:relative;
+                z-index:20;
+                pointer-events:auto !important;
             }
         }
     </style>
 </head>
-<body class="font-inter bg-light text-gray-800 scroll-smooth">
+<body class="font-inter bg-light text-gray-800">
     <!-- Navbar -->
     <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-soft">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -56,7 +60,7 @@
                 <a href="#profil" class="hover:text-primary transition">Profil</a>
                 <a href="#layanan" class="hover:text-primary transition">Layanan Jamaah</a>
                 <a href="#kontak" class="hover:text-primary transition">Kontak</a>
-                <button class="px-4 py-2 bg-emas text-white rounded-lg hover:bg-amber-600 transition">Login Admin</button>
+                <button onclick="bukaAdmin()" class="px-4 py-2 bg-emas text-white rounded-lg hover:bg-amber-600 transition">Login Admin</button>
             </nav>
             <button class="md:hidden text-primary text-2xl">☰</button>
         </div>
@@ -76,30 +80,48 @@
         </div>
     </section>
 
-    <!-- Kartu Info Cepat -->
+    <!-- Kartu Info Cepat (Dapat Diklik) -->
     <section class="container mx-auto px-4 -mt-12 relative z-10">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div class="bg-white p-6 rounded-xl-custom shadow-soft">
+            <a href="#jadwal-shalat" class="bg-white p-6 rounded-xl-custom shadow-soft hover:shadow-lg transition block">
                 <div class="text-3xl mb-3">🕌</div>
                 <h3 class="font-semibold text-primary mb-2">Jadwal Shalat</h3>
                 <p class="text-sm text-gray-600">Lihat waktu shalat harian & jadwal imam</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl-custom shadow-soft">
+            </a>
+            <a href="#pengumuman" class="bg-white p-6 rounded-xl-custom shadow-soft hover:shadow-lg transition block">
                 <div class="text-3xl mb-3">📢</div>
                 <h3 class="font-semibold text-primary mb-2">Pengumuman</h3>
                 <p class="text-sm text-gray-600">Daftar berita terbaru untuk seluruh jamaah</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl-custom shadow-soft">
+            </a>
+            <a href="#laporan-keuangan" class="bg-white p-6 rounded-xl-custom shadow-soft hover:shadow-lg transition block">
                 <div class="text-3xl mb-3">💰</div>
                 <h3 class="font-semibold text-primary mb-2">Laporan Keuangan</h3>
                 <p class="text-sm text-gray-600">Data pemasukan & pengeluaran masjid</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl-custom shadow-soft">
+            </a>
+            <a href="#kegiatan" class="bg-white p-6 rounded-xl-custom shadow-soft hover:shadow-lg transition block">
                 <div class="text-3xl mb-3">📅</div>
                 <h3 class="font-semibold text-primary mb-2">Kegiatan Mendatang</h3>
                 <p class="text-sm text-gray-600">Pengajian rutin Jumat Kliwon & agenda lain</p>
-            </div>
+            </a>
         </div>
+    </section>
+
+    <!-- Bagian Tampilan Data Realtime -->
+    <section id="jadwal-shalat" class="container mx-auto px-4 py-16">
+        <h2 class="text-2xl font-bold text-primary mb-6">🕌 Jadwal Shalat & Imam Khotib</h2>
+        <div id="tabelJadwalShalat" class="bg-white p-6 rounded-xl-custom shadow-soft"></div>
+    </section>
+    <section id="pengumuman" class="container mx-auto px-4 py-16 bg-gray-50">
+        <h2 class="text-2xl font-bold text-primary mb-6">📢 Pengumuman</h2>
+        <div id="kontenPengumuman" class="bg-white p-6 rounded-xl-custom shadow-soft"></div>
+    </section>
+    <section id="laporan-keuangan" class="container mx-auto px-4 py-16">
+        <h2 class="text-2xl font-bold text-primary mb-6">💰 Laporan Keuangan (Update Setiap Jumat)</h2>
+        <div id="kontenKeuangan" class="bg-white p-6 rounded-xl-custom shadow-soft"></div>
+    </section>
+    <section id="kegiatan" class="container mx-auto px-4 py-16 bg-gray-50">
+        <h2 class="text-2xl font-bold text-primary mb-6">📅 Kegiatan Mendatang</h2>
+        <div id="kontenKegiatan" class="bg-white p-6 rounded-xl-custom shadow-soft"></div>
     </section>
 
     <!-- Visi Misi -->
@@ -192,64 +214,4 @@
     <!-- Footer -->
     <footer id="kontak" class="bg-primary text-white py-12">
         <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-3 gap-8">
-                <div>
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary text-xl">🕌</div>
-                        <h3 class="text-xl font-semibold">Baitus Shomad</h3>
-                    </div>
-                    <p class="text-gray-200 text-sm">Badan Kemakmuran Masjid, Mijen Tengah, Kec. Kebonagung, Kabupaten Demak</p>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Link Cepat</h4>
-                    <ul class="space-y-2 text-sm text-gray-200">
-                        <li><a href="#profil" class="hover:text-emas">Profil BKM</a></li>
-                        <li><a href="#layanan" class="hover:text-emas">Layanan Jamaah</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Kontak</h4>
-                    <ul class="space-y-2 text-sm text-gray-200">
-                        <li>📞 Nomor Pengurus: 08xx-xxxx-xxxx</li>
-                        <li>✉️ Email: bkm.baitusshomad@gmail.com</li>
-                        <li>📍 Mijen Tengah, Kebonagung, Demak</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-t border-white/20 mt-10 pt-6 text-center text-sm text-gray-300">
-                © 2026 BKM Masjid Baitus Shomad. Semua Hak Dilindungi
-            </div>
-        </div>
-    </footer>
-
-    <script>
-      // Ganti dengan URL Web App milikmu
-      const URL_WEBAPP = "https://script.google.com/macros/s/AKfycbz6xPSqFmk2ZvVh1xYZ-ogU-tGJnVl5VlWizH0hP6RGIpgcihrr3WMqfLv6PehZDMHpDQ/exec";
-      const form = document.getElementById("formBKM");
-      const notif = document.getElementById("notif");
-
-      form.addEventListener("submit", async (e)=>{
-        e.preventDefault();
-        const formData = new FormData(form);
-        const payload = Object.fromEntries(formData.entries());
-        try {
-          const res = await fetch(URL_WEBAPP, {
-            method: "POST",
-            body: JSON.stringify(payload)
-          });
-          const hasil = await res.json();
-          if(hasil.status === "berhasil"){
-            notif.textContent = "✅ Pesan berhasil terkirim!";
-            notif.className = "mt-4 text-center text-green-600";
-            notif.classList.remove("hidden");
-            form.reset();
-          }
-        } catch(err) {
-          notif.textContent = "❌ Gagal mengirim data";
-          notif.className = "mt-4 text-center text-red-600";
-          notif.classList.remove("hidden");
-        }
-      })
-    </script>
-</body>
-</html>
+            <div class="
